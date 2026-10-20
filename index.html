@@ -9,6 +9,18 @@
 *{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at top,#20235b 0%,var(--bg) 55%);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,sans-serif}button{font:inherit;cursor:pointer}.wrap{width:min(940px,94vw);margin:auto;padding:24px 0 38px}.top{text-align:center}.eyebrow{letter-spacing:.22em;color:var(--cyan);font-size:.78rem;font-weight:900}.brand{font-size:clamp(2.3rem,7vw,4.8rem);line-height:.98;margin:12px 0;text-transform:uppercase;font-weight:1000;text-shadow:4px 4px 0 #572bb6,0 0 22px #4df7ff55}.brand span{color:var(--lime)}.sub{color:var(--muted);margin:10px auto 20px;max-width:630px}.chips{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:16px 0 22px}.chip{border:1px solid #3d477a;background:#141a36;border-radius:99px;padding:7px 12px;font-size:.84rem;color:#e1e7ff}.progressbox{background:#10162e;border:1px solid #303b70;border-radius:14px;padding:12px 14px;margin-bottom:16px}.progresstop{display:flex;justify-content:space-between;gap:10px;font-size:.82rem;color:var(--muted);margin-bottom:8px}.track{height:9px;background:#2a3156;border-radius:9px;overflow:hidden}.bar{height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--lime));transition:width .3s}.card{background:linear-gradient(145deg,#191f42,#11162e);border:1px solid #3b4780;border-radius:22px;padding:clamp(18px,4vw,32px);box-shadow:0 16px 50px #0005}.levelhead{display:flex;align-items:center;gap:12px;margin-bottom:18px}.levelicon{font-size:2.2rem}.leveltag{color:var(--cyan);text-transform:uppercase;font-size:.76rem;letter-spacing:.12em;font-weight:900}.leveltitle{font-size:1.35rem;font-weight:850;margin-top:2px}.qnum{margin-left:auto;border-radius:10px;padding:7px 10px;background:#29274f;color:var(--lime);font-size:.8rem;white-space:nowrap}.question{font-size:clamp(1.25rem,3vw,1.7rem);font-weight:800;line-height:1.25;margin:18px 0 20px}.answers{display:grid;gap:10px}.answer{width:100%;text-align:left;padding:14px 16px;border-radius:13px;border:1px solid #3d477a;background:#101630;color:var(--ink);transition:.15s}.answer:hover:not(:disabled){border-color:var(--cyan);transform:translateY(-1px);background:#1c2750}.answer:disabled{cursor:default}.answer.correct{border-color:var(--lime);background:#273723}.answer.incorrect{border-color:var(--wrong);background:#3b2135}.feedback{display:none;margin-top:15px;padding:13px 15px;border-radius:12px;line-height:1.45}.feedback.show{display:block}.feedback.good{border:1px solid #8dcc3b;background:#26351f}.feedback.bad{border:1px solid #b75375;background:#3b2135}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.primary,.secondary{border:0;border-radius:12px;padding:12px 18px;font-weight:850}.primary{background:linear-gradient(110deg,var(--cyan),#9bffb8);color:#071324}.primary:disabled{opacity:.35;cursor:not-allowed}.secondary{background:#252b50;color:var(--ink);border:1px solid #424c7e}.foot{color:#8f9bc5;text-align:center;font-size:.78rem;margin-top:18px}.hidden{display:none!important}.result{text-align:center}.result .big{font-size:4rem}.result h2{font-size:2.2rem;margin:8px 0}.score{font-size:1.5rem;color:var(--lime);font-weight:900;margin:14px 0}.completion{border:2px dashed var(--cyan);border-radius:18px;margin-top:22px;padding:24px;background:#101934}.completion h3{color:var(--cyan);margin:0 0 8px;font-size:1.5rem}.reflection{width:100%;min-height:86px;background:#0c1229;color:var(--ink);border:1px solid #465183;border-radius:10px;padding:12px;margin-top:8px;font:inherit}.note{font-size:.9rem;color:var(--muted);line-height:1.5}.reviewitem{text-align:left;padding:12px;border-bottom:1px solid #343e6b}.reviewitem:last-child{border:0}.small{font-size:.82rem;color:var(--muted)}
 @media(min-width:700px){.answers{grid-template-columns:1fr 1fr}.answer{min-height:72px}}
 @media print{body{background:white;color:#111}.wrap{width:100%}.completion,.card{background:white;color:#111;border-color:#333;box-shadow:none}.sub,.foot,.note,.small{color:#333}.top .chips,.progressbox,.actions,#gameCard{display:none!important}.result{display:block!important}.completion{border:3px solid #111}}
+
+.diagram-layout{display:grid;grid-template-columns:minmax(210px, .8fr) minmax(0,1.2fr);gap:20px;align-items:center;margin-top:16px}
+.body-stage{text-align:center;background:#0c1229;border:1px solid #343e6b;border-radius:16px;padding:12px}
+.body-svg{width:100%;max-width:300px;height:auto;max-height:390px}
+.hotspot{cursor:pointer;stroke:#10162e;stroke-width:2;transition:filter .15s,stroke-width .15s}
+.hotspot:hover,.hotspot:focus{filter:brightness(1.35);stroke:#fff;stroke-width:4;outline:none}
+.diagram-info h3{font-size:1.4rem;margin:8px 0}
+.diagram-info .answers{grid-template-columns:1fr}
+.diagram-info .answer{min-height:0}
+.diagram-info .answer:disabled{opacity:.9}
+@media(max-width:650px){.diagram-layout{grid-template-columns:1fr}.body-svg{max-height:320px}.body-stage{max-width:380px;margin:auto;width:100%}}
+
 </style>
 </head>
 <body>
@@ -19,6 +31,47 @@
 <div class="sub">THE MUSCLE ARCADE · Identify major muscle groups, match muscles to movements, choose exercises, and review safe strength training.</div>
 <div class="chips"><div class="chip">🎮 4 LEVELS</div><div class="chip">⚡ 12 QUESTIONS</div><div class="chip">🏆 EARN YOUR POWER-UP</div></div>
 </header>
+
+<section class="card diagram-card" id="muscleDiagram" style="margin-bottom:16px">
+ <div class="eyebrow">INTERACTIVE BONUS ROUND</div>
+ <h2 style="margin:8px 0 4px">🧍 Click a Muscle!</h2>
+ <p class="note">Choose a highlighted muscle on the body diagram. Then select the exercise that best matches it. Explore all five muscle groups!</p>
+ <div class="diagram-layout">
+  <div class="body-stage">
+   <svg viewBox="0 0 300 390" role="group" aria-label="Interactive front-view muscle diagram" class="body-svg">
+    <circle cx="150" cy="38" r="25" fill="#d9e0f6" stroke="#7e8bb9" stroke-width="2"/>
+    <rect x="139" y="59" width="22" height="18" rx="7" fill="#d9e0f6"/>
+    <path d="M111 76 Q150 64 189 76 L202 158 Q180 174 170 166 L130 166 Q120 174 98 158 Z" fill="#d9e0f6" stroke="#7e8bb9" stroke-width="2"/>
+    <path d="M111 79 L86 89 L64 151 Q61 164 70 168 Q80 171 86 157 L112 112" fill="#d9e0f6" stroke="#7e8bb9" stroke-width="2"/>
+    <path d="M189 79 L214 89 L236 151 Q239 164 230 168 Q220 171 214 157 L188 112" fill="#d9e0f6" stroke="#7e8bb9" stroke-width="2"/>
+    <path d="M130 163 L170 163 L176 197 L168 224 L132 224 L124 197 Z" fill="#d9e0f6" stroke="#7e8bb9" stroke-width="2"/>
+    <path d="M132 220 L168 220 L164 290 L157 350 Q151 360 142 350 L137 291 Z" fill="#d9e0f6" stroke="#7e8bb9" stroke-width="2"/>
+    <path d="M168 220 L132 220 L136 290 L143 350 Q150 360 158 350 L163 291 Z" fill="#d9e0f6" stroke="#7e8bb9" stroke-width="2" opacity=".01"/>
+    <path d="M139 350 L143 366 L125 373 L104 373 Q100 367 110 362 L136 350 Z" fill="#d9e0f6" stroke="#7e8bb9" stroke-width="2"/>
+    <path d="M157 350 L164 366 L185 373 L204 373 Q208 367 198 362 L160 350 Z" fill="#d9e0f6" stroke="#7e8bb9" stroke-width="2"/>
+    <path class="hotspot" data-muscle="pectorals" tabindex="0" role="button" aria-label="Pectorals, chest muscles" d="M119 89 Q136 78 148 91 L147 119 Q131 124 119 108 Z" fill="#ff55c8"/>
+    <path class="hotspot" data-muscle="pectorals" tabindex="0" role="button" aria-label="Pectorals, chest muscles" d="M152 91 Q164 78 181 89 L181 108 Q169 124 153 119 Z" fill="#ff55c8"/>
+    <path class="hotspot" data-muscle="biceps" tabindex="0" role="button" aria-label="Biceps, front upper arms" d="M87 104 L105 109 L91 147 L79 142 Z" fill="#4df7ff"/>
+    <path class="hotspot" data-muscle="biceps" tabindex="0" role="button" aria-label="Biceps, front upper arms" d="M195 109 L213 104 L221 142 L209 147 Z" fill="#4df7ff"/>
+    <path class="hotspot" data-muscle="abdominals" tabindex="0" role="button" aria-label="Abdominals, core muscles" d="M132 123 L168 123 L165 160 L135 160 Z" fill="#c7ff58"/>
+    <path class="hotspot" data-muscle="quadriceps" tabindex="0" role="button" aria-label="Quadriceps, front thigh muscles" d="M132 171 L148 171 L147 214 L130 214 Z" fill="#9c79ff"/>
+    <path class="hotspot" data-muscle="quadriceps" tabindex="0" role="button" aria-label="Quadriceps, front thigh muscles" d="M152 171 L169 171 L170 214 L153 214 Z" fill="#9c79ff"/>
+    <path class="hotspot" data-muscle="calves" tabindex="0" role="button" aria-label="Calves, lower leg muscles" d="M139 255 L148 255 L146 328 L140 335 Z" fill="#ffb84d"/>
+    <path class="hotspot" data-muscle="calves" tabindex="0" role="button" aria-label="Calves, lower leg muscles" d="M153 255 L162 255 L161 335 L155 328 Z" fill="#ffb84d"/>
+   </svg>
+   <div class="small">Front view · Select a colored muscle group</div>
+  </div>
+  <div class="diagram-info">
+   <div class="leveltag">YOUR SELECTED MUSCLE</div>
+   <h3 id="muscleName">Choose a muscle</h3>
+   <p id="muscleFunction" class="note">Click one of the colored areas on the diagram to learn what that muscle group helps you do.</p>
+   <div id="exerciseChoices" class="answers"></div>
+   <div id="muscleFeedback" class="feedback" aria-live="polite"></div>
+   <div class="small" id="muscleProgress">Muscle matches: 0 / 5</div>
+   <button class="secondary" id="resetDiagram" style="margin-top:12px">Reset muscle matches</button>
+  </div>
+ </div>
+</section>
 <div class="progressbox" id="progressbox"><div class="progresstop"><span id="progressText">Level 1 of 4</span><span id="scoreText">Score: 0 / 0</span></div><div class="track"><div class="bar" id="progressBar"></div></div></div>
 <section class="card" id="gameCard">
 <div class="levelhead"><div class="levelicon" id="levelIcon">💪</div><div><div class="leveltag" id="levelTag">LEVEL 1</div><div class="leveltitle" id="levelTitle">Muscle Match</div></div><div class="qnum" id="qnum">QUESTION 1/3</div></div>
@@ -71,6 +124,21 @@ function finish(){$("gameCard").classList.add("hidden");$("resultCard").classLis
 function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function restart() {li=0;qi=0;score=0;answered=0;locked=false;history=[];$("reflection").value="";render();window.scrollTo({top:0,behavior:"smooth"})}
 $("restartBtn").addEventListener("click",restart);$("playAgainBtn").addEventListener("click",restart);$("printBtn").addEventListener("click",()=>window.print());
+
+const muscleData={
+pectorals:{name:"Pectorals (Chest)",fn:"These chest muscles help with pushing movements, such as pushing a door or moving your body away from the floor.",exercise:"Push-up",options:["Push-up","Calf raise","Biceps curl","Hamstring stretch"]},
+biceps:{name:"Biceps (Front Upper Arm)",fn:"The biceps help bend your elbow, such as when lifting an object or performing a curl.",exercise:"Biceps curl",options:["Squat","Biceps curl","Calf raise","Glute bridge"]},
+abdominals:{name:"Abdominals (Core)",fn:"The abdominal muscles help support your trunk and control your posture during movement.",exercise:"Plank",options:["Plank","Biceps curl","Calf raise","Wrist curl"]},
+quadriceps:{name:"Quadriceps (Front Thigh)",fn:"The quadriceps help straighten your knee and are active during movements such as standing up from a squat.",exercise:"Squat",options:["Biceps curl","Squat","Push-up","Shoulder shrug"]},
+calves:{name:"Calves (Lower Leg)",fn:"The calf muscles help point your toes and lift your heels, such as during a calf raise.",exercise:"Calf raise",options:["Calf raise","Crunch","Push-up","Biceps curl"]}
+};
+let selectedMuscle=null;const matchedMuscles=new Set();
+function selectMuscle(key){selectedMuscle=key;const m=muscleData[key];$("muscleName").textContent=m.name;$("muscleFunction").textContent=m.fn;$("muscleFeedback").className="feedback";$("muscleFeedback").textContent="";$("exerciseChoices").innerHTML="";
+m.options.forEach(opt=>{const b=document.createElement("button");b.className="answer";b.textContent=opt;b.addEventListener("click",()=>{const good=opt===m.exercise;[...$("exerciseChoices").children].forEach(x=>x.disabled=true);b.classList.add(good?"correct":"incorrect");$("muscleFeedback").className="feedback show "+(good?"good":"bad");$("muscleFeedback").textContent=good?"✅ Correct match! "+m.name+" are worked by the "+m.exercise.toLowerCase()+" exercise.":"💡 Try again next time! A good exercise match for "+m.name+" is: "+m.exercise+".";if(good)matchedMuscles.add(key);$("muscleProgress").textContent="Muscle matches: "+matchedMuscles.size+" / 5";});$("exerciseChoices").appendChild(b)});
+}
+document.querySelectorAll(".hotspot").forEach(el=>{const activate=()=>selectMuscle(el.dataset.muscle);el.addEventListener("click",activate);el.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();activate()}})});
+$("resetDiagram").addEventListener("click",()=>{matchedMuscles.clear();selectedMuscle=null;$("muscleName").textContent="Choose a muscle";$("muscleFunction").textContent="Click one of the colored areas on the diagram to learn what that muscle group helps you do.";$("exerciseChoices").innerHTML="";$("muscleFeedback").className="feedback";$("muscleFeedback").textContent="";$("muscleProgress").textContent="Muscle matches: 0 / 5"});
+
 render();
 </script>
 </body>
