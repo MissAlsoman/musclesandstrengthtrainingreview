@@ -3,7 +3,8 @@
 A student-friendly, browser-based review game for PE Weeks 7–9: Muscle Mechanics, Muscles in Motion, and Strength Training.
 
 ## What's included
-- Four levels: Muscle ID, Movement Match, Choose the Exercise, and Train Smart
+- Interactive clickable front-view muscle diagram with five muscle groups and exercise matching
+- Four quiz levels: Muscle ID, Movement Match, Choose the Exercise, and Train Smart
 - 12 multiple-choice questions with immediate feedback and explanations, connecting muscle groups to movements and strength exercises
 - Score tracking and an end-of-game completion screen
 - Optional reflection prompt
