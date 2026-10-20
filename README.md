@@ -3,8 +3,8 @@
 A student-friendly, browser-based review game for PE Weeks 7–9: Muscle Mechanics, Muscles in Motion, and Strength Training.
 
 ## What's included
-- Four levels: Muscle Match, Movement Mechanics, Recovery Lab, and Strength Safety
-- 12 multiple-choice questions with immediate feedback and explanations
+- Four levels: Muscle ID, Movement Match, Choose the Exercise, and Train Smart
+- 12 multiple-choice questions with immediate feedback and explanations, connecting muscle groups to movements and strength exercises
 - Score tracking and an end-of-game completion screen
 - Optional reflection prompt
 - No extra libraries, logins, or data collection
