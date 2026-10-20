@@ -79,6 +79,7 @@
 <div class="answers" id="answers"></div><div class="feedback" id="feedback" aria-live="polite"></div>
 <div class="actions"><button class="primary" id="nextBtn" disabled>Lock In Answer →</button><button class="secondary" id="restartBtn">↻ Restart</button></div>
 </section>
+<section class="card result hidden" id="roundCard"><div class="big" id="roundIcon">⭐</div><div class="eyebrow">ROUND COMPLETE</div><h2 id="roundHeading">LEVEL COMPLETE!</h2><p class="sub" id="roundMessage"></p><div class="score" id="roundScore"></div><div class="completion"><h3>🎯 ROUND SCORE</h3><p id="roundProof"></p><p class="note">Want extra credit? Screenshot this round score and submit it through the Week 10 Extra Credit assignment in Canvas. Complete more rounds to show what you know!</p></div><div class="actions" style="justify-content:center"><button class="primary" id="continueBtn">Next Level →</button><button class="secondary" id="restartRoundBtn">↻ Restart Game</button></div></section>
 <section class="card result hidden" id="resultCard">
 <div class="big" id="resultIcon">🏆</div><div class="eyebrow">ARCADE COMPLETE</div><h2 id="resultHeading">POWER-UP UNLOCKED!</h2><p class="sub" id="resultMessage"></p><div class="score" id="finalScore"></div>
 <div class="completion" id="completionPanel"><h3>✅ PE POWER-UP: COMPLETED</h3><p><strong>Muscle ID & Strength Training Review</strong></p><p id="scoreProof"></p><p class="note">SCREENSHOT THIS COMPLETION SCREEN and submit it through the Week 10 Extra Credit assignment in Canvas.</p></div>
@@ -107,7 +108,7 @@ const levels=[
 {q:"Why is recovery time important after challenging strength exercise?",a:["Muscles never need rest","It supports repair and adaptation","It guarantees no soreness","It makes proper form unnecessary"],c:1,why:"Recovery gives the body time to repair and adapt to training."},
 {q:"What is a smart choice if an exercise causes sharp pain or you are unsure how to do it safely?",a:["Push through the pain","Add more resistance","Stop and ask a qualified adult or instructor for guidance","Copy the fastest person"],c:2,why:"Stop if you feel sharp pain and ask for guidance before continuing."}]}
 ];
-let li=0,qi=0,score=0,answered=0,locked=false,history=[];
+let li=0,qi=0,score=0,answered=0,locked=false,history=[],levelScores=[0,0,0,0];
 const $=id=>document.getElementById(id);
 function render(){
 locked=false;const L=levels[li],Q=L.qs[qi];$("progressbox").classList.remove("hidden");$("gameCard").classList.remove("hidden");$("resultCard").classList.add("hidden");
@@ -117,12 +118,27 @@ $("nextBtn").textContent=qi===2?(li===3?"See Results 🏆":"Next Level →"):"Lo
 Q.a.forEach((txt,i)=>{const b=document.createElement("button");b.className="answer";b.textContent=String.fromCharCode(65+i)+". "+txt;b.addEventListener("click",()=>choose(i,b));$("answers").appendChild(b)});
 updateStats();
 }
-function choose(i,button){if(locked)return;locked=true;const Q=levels[li].qs[qi],buttons=[...$("answers").children],ok=i===Q.c;answered++;if(ok)score++;history.push({level:levels[li].title,q:Q.q,choice:Q.a[i],correct:Q.a[Q.c],ok,why:Q.why});buttons.forEach((b,j)=>{b.disabled=true;if(j===Q.c)b.classList.add("correct");if(j===i&&!ok)b.classList.add("incorrect")});$("feedback").className="feedback show "+(ok?"good":"bad");$("feedback").innerHTML=(ok?"✅ <strong>Correct!</strong> ":"💡 <strong>Not quite.</strong> ")+Q.why;$("nextBtn").disabled=false;$("nextBtn").textContent=qi===2?(li===3?"See Results 🏆":"Next Level →"):"Next Question →";updateStats()}
+function choose(i,button){if(locked)return;locked=true;const Q=levels[li].qs[qi],buttons=[...$("answers").children],ok=i===Q.c;answered++;if(ok){score++;levelScores[li]++;}history.push({level:levels[li].title,q:Q.q,choice:Q.a[i],correct:Q.a[Q.c],ok,why:Q.why});buttons.forEach((b,j)=>{b.disabled=true;if(j===Q.c)b.classList.add("correct");if(j===i&&!ok)b.classList.add("incorrect")});$("feedback").className="feedback show "+(ok?"good":"bad");$("feedback").innerHTML=(ok?"✅ <strong>Correct!</strong> ":"💡 <strong>Not quite.</strong> ")+Q.why;$("nextBtn").disabled=false;$("nextBtn").textContent=qi===2?(li===3?"See Results 🏆":"Next Level →"):"Next Question →";updateStats()}
 function updateStats(){$("scoreText").textContent="Score: "+score+" / "+answered;$("progressText").textContent="Level "+(li+1)+" of 4";$("progressBar").style.width=((li*3+qi)/12*100)+"%"}
-$("nextBtn").addEventListener("click",()=>{if(!locked)return;if(qi<2)qi++;else if(li<3){li++;qi=0}else{finish();return}render()});
-function finish(){$("gameCard").classList.add("hidden");$("resultCard").classList.remove("hidden");$("progressBar").style.width="100%";$("progressText").textContent="All 4 levels complete";$("scoreText").textContent="Score: "+score+" / 12";const pct=Math.round(score/12*100);$("resultIcon").textContent=pct>=90?"🏆":pct>=70?"🌟":"💪";$("resultHeading").textContent=pct>=90?"POWER-UP MASTER!":pct>=70?"POWER-UP UNLOCKED!":"TRAINING COMPLETE!";$("resultMessage").textContent=pct>=90?"Excellent work—you showed strong knowledge of muscle mechanics and safe training.":pct>=70?"Nice work! You powered through all four levels. Review the explanations below to build your knowledge even more.":"You made it through all four levels! Review the feedback and try again to strengthen your knowledge."; $("finalScore").textContent=score+" / 12 correct · "+pct+"%";$("scoreProof").textContent="Final Score: "+score+" out of 12 ("+pct+"%)";$("review").innerHTML=history.map((h,i)=>'<div class="reviewitem"><strong>'+(i+1)+'. '+escapeHtml(h.q)+'</strong><div class="small">'+(h.ok?'✅ Correct':'❌ Your answer: '+escapeHtml(h.choice))+'<br>Correct answer: '+escapeHtml(h.correct)+'<br>'+escapeHtml(h.why)+'</div></div>').join("");}
+$("nextBtn").addEventListener("click",()=>{if(!locked)return;if(qi<2){qi++;render()}else{showRoundResult()}});
+function showRoundResult(){
+ $("gameCard").classList.add("hidden");$("resultCard").classList.add("hidden");$("roundCard").classList.remove("hidden");
+ const pct=Math.round(levelScores[li]/3*100);
+ $("roundIcon").textContent=pct===100?"🏆":pct>=67?"🌟":"💪";
+ $("roundHeading").textContent="LEVEL "+(li+1)+" COMPLETE!";
+ $("roundMessage").textContent="You finished "+levels[li].title+". Check your score, then continue to the next round.";
+ $("roundScore").textContent=levelScores[li]+" / 3 correct · "+pct+"%";
+ $("roundProof").textContent=levels[li].title+": "+levelScores[li]+" out of 3 correct ("+pct+"%).";
+ $("continueBtn").textContent=li===3?"See Final Results 🏆":"Next Level →";
+ $("progressText").textContent="Level "+(li+1)+" complete";
+ $("scoreText").textContent="Total score: "+score+" / "+answered;
+ $("progressBar").style.width=((li+1)/4*100)+"%";
+}
+$("continueBtn").addEventListener("click",()=>{if(li<3){li++;qi=0;render()}else{finish()}});
+$("restartRoundBtn").addEventListener("click",restart);
+function finish(){$("gameCard").classList.add("hidden");$("roundCard").classList.add("hidden");$("resultCard").classList.remove("hidden");$("progressBar").style.width="100%";$("progressText").textContent="All 4 levels complete";$("scoreText").textContent="Score: "+score+" / 12";const pct=Math.round(score/12*100);$("resultIcon").textContent=pct>=90?"🏆":pct>=70?"🌟":"💪";$("resultHeading").textContent=pct>=90?"POWER-UP MASTER!":pct>=70?"POWER-UP UNLOCKED!":"TRAINING COMPLETE!";$("resultMessage").textContent=pct>=90?"Excellent work—you showed strong knowledge of muscle mechanics and safe training.":pct>=70?"Nice work! You powered through all four levels. Review the explanations below to build your knowledge even more.":"You made it through all four levels! Review the feedback and try again to strengthen your knowledge."; $("finalScore").textContent=score+" / 12 correct · "+pct+"%";$("scoreProof").textContent="Final Score: "+score+" out of 12 ("+pct+"%)";$("review").innerHTML=history.map((h,i)=>'<div class="reviewitem"><strong>'+(i+1)+'. '+escapeHtml(h.q)+'</strong><div class="small">'+(h.ok?'✅ Correct':'❌ Your answer: '+escapeHtml(h.choice))+'<br>Correct answer: '+escapeHtml(h.correct)+'<br>'+escapeHtml(h.why)+'</div></div>').join("");}
 function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-function restart() {li=0;qi=0;score=0;answered=0;locked=false;history=[];$("reflection").value="";render();window.scrollTo({top:0,behavior:"smooth"})}
+function restart() {li=0;qi=0;score=0;answered=0;locked=false;history=[];levelScores=[0,0,0,0];$("roundCard").classList.add("hidden");$("reflection").value="";render();window.scrollTo({top:0,behavior:"smooth"})}
 $("restartBtn").addEventListener("click",restart);$("playAgainBtn").addEventListener("click",restart);$("printBtn").addEventListener("click",()=>window.print());
 
 const muscleData={
