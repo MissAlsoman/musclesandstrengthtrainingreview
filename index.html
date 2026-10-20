@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PE Power-Up | Muscle Arcade</title>
+<style>
+:root{--bg:#090d20;--panel:#151b39;--ink:#f6f7ff;--muted:#b8c3e8;--cyan:#4df7ff;--pink:#ff55c8;--lime:#c7ff58;--purple:#9c79ff;--wrong:#ff6b83}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at top,#20235b 0%,var(--bg) 55%);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,sans-serif}button{font:inherit;cursor:pointer}.wrap{width:min(940px,94vw);margin:auto;padding:24px 0 38px}.top{text-align:center}.eyebrow{letter-spacing:.22em;color:var(--cyan);font-size:.78rem;font-weight:900}.brand{font-size:clamp(2.3rem,7vw,4.8rem);line-height:.98;margin:12px 0;text-transform:uppercase;font-weight:1000;text-shadow:4px 4px 0 #572bb6,0 0 22px #4df7ff55}.brand span{color:var(--lime)}.sub{color:var(--muted);margin:10px auto 20px;max-width:630px}.chips{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:16px 0 22px}.chip{border:1px solid #3d477a;background:#141a36;border-radius:99px;padding:7px 12px;font-size:.84rem;color:#e1e7ff}.progressbox{background:#10162e;border:1px solid #303b70;border-radius:14px;padding:12px 14px;margin-bottom:16px}.progresstop{display:flex;justify-content:space-between;gap:10px;font-size:.82rem;color:var(--muted);margin-bottom:8px}.track{height:9px;background:#2a3156;border-radius:9px;overflow:hidden}.bar{height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--lime));transition:width .3s}.card{background:linear-gradient(145deg,#191f42,#11162e);border:1px solid #3b4780;border-radius:22px;padding:clamp(18px,4vw,32px);box-shadow:0 16px 50px #0005}.levelhead{display:flex;align-items:center;gap:12px;margin-bottom:18px}.levelicon{font-size:2.2rem}.leveltag{color:var(--cyan);text-transform:uppercase;font-size:.76rem;letter-spacing:.12em;font-weight:900}.leveltitle{font-size:1.35rem;font-weight:850;margin-top:2px}.qnum{margin-left:auto;border-radius:10px;padding:7px 10px;background:#29274f;color:var(--lime);font-size:.8rem;white-space:nowrap}.question{font-size:clamp(1.25rem,3vw,1.7rem);font-weight:800;line-height:1.25;margin:18px 0 20px}.answers{display:grid;gap:10px}.answer{width:100%;text-align:left;padding:14px 16px;border-radius:13px;border:1px solid #3d477a;background:#101630;color:var(--ink);transition:.15s}.answer:hover:not(:disabled){border-color:var(--cyan);transform:translateY(-1px);background:#1c2750}.answer:disabled{cursor:default}.answer.correct{border-color:var(--lime);background:#273723}.answer.incorrect{border-color:var(--wrong);background:#3b2135}.feedback{display:none;margin-top:15px;padding:13px 15px;border-radius:12px;line-height:1.45}.feedback.show{display:block}.feedback.good{border:1px solid #8dcc3b;background:#26351f}.feedback.bad{border:1px solid #b75375;background:#3b2135}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.primary,.secondary{border:0;border-radius:12px;padding:12px 18px;font-weight:850}.primary{background:linear-gradient(110deg,var(--cyan),#9bffb8);color:#071324}.primary:disabled{opacity:.35;cursor:not-allowed}.secondary{background:#252b50;color:var(--ink);border:1px solid #424c7e}.foot{color:#8f9bc5;text-align:center;font-size:.78rem;margin-top:18px}.hidden{display:none!important}.result{text-align:center}.result .big{font-size:4rem}.result h2{font-size:2.2rem;margin:8px 0}.score{font-size:1.5rem;color:var(--lime);font-weight:900;margin:14px 0}.completion{border:2px dashed var(--cyan);border-radius:18px;margin-top:22px;padding:24px;background:#101934}.completion h3{color:var(--cyan);margin:0 0 8px;font-size:1.5rem}.reflection{width:100%;min-height:86px;background:#0c1229;color:var(--ink);border:1px solid #465183;border-radius:10px;padding:12px;margin-top:8px;font:inherit}.note{font-size:.9rem;color:var(--muted);line-height:1.5}.reviewitem{text-align:left;padding:12px;border-bottom:1px solid #343e6b}.reviewitem:last-child{border:0}.small{font-size:.82rem;color:var(--muted)}
+@media(min-width:700px){.answers{grid-template-columns:1fr 1fr}.answer{min-height:72px}}
+@media print{body{background:white;color:#111}.wrap{width:100%}.completion,.card{background:white;color:#111;border-color:#333;box-shadow:none}.sub,.foot,.note,.small{color:#333}.top .chips,.progressbox,.actions,#gameCard{display:none!important}.result{display:block!important}.completion{border:3px solid #111}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<div class="eyebrow">VIRTUAL PE • WEEKS 7–9 REVIEW</div>
+<h1 class="brand">PE <span>POWER-UP</span></h1>
+<div class="sub">THE MUSCLE ARCADE · Test your knowledge of muscles, movement, recovery, and strength-training safety.</div>
+<div class="chips"><div class="chip">🎮 4 LEVELS</div><div class="chip">⚡ 12 QUESTIONS</div><div class="chip">🏆 EARN YOUR POWER-UP</div></div>
+</header>
+<div class="progressbox" id="progressbox"><div class="progresstop"><span id="progressText">Level 1 of 4</span><span id="scoreText">Score: 0 / 0</span></div><div class="track"><div class="bar" id="progressBar"></div></div></div>
+<section class="card" id="gameCard">
+<div class="levelhead"><div class="levelicon" id="levelIcon">💪</div><div><div class="leveltag" id="levelTag">LEVEL 1</div><div class="leveltitle" id="levelTitle">Muscle Match</div></div><div class="qnum" id="qnum">QUESTION 1/3</div></div>
+<div class="question" id="question">Loading your first challenge…</div>
+<div class="answers" id="answers"></div><div class="feedback" id="feedback" aria-live="polite"></div>
+<div class="actions"><button class="primary" id="nextBtn" disabled>Lock In Answer →</button><button class="secondary" id="restartBtn">↻ Restart</button></div>
+</section>
+<section class="card result hidden" id="resultCard">
+<div class="big" id="resultIcon">🏆</div><div class="eyebrow">ARCADE COMPLETE</div><h2 id="resultHeading">POWER-UP UNLOCKED!</h2><p class="sub" id="resultMessage"></p><div class="score" id="finalScore"></div>
+<div class="completion" id="completionPanel"><h3>✅ PE POWER-UP: COMPLETED</h3><p><strong>Muscles & Strength Training Review</strong></p><p id="scoreProof"></p><p class="note">SCREENSHOT THIS COMPLETION SCREEN and submit it through the Week 10 Extra Credit assignment in Canvas.</p></div>
+<div style="text-align:left;margin-top:24px"><h3>⭐ Optional Reflection</h3><p class="note">What is one thing you can do to make strength training safer or help your muscles recover?</p><textarea class="reflection" id="reflection" placeholder="Write your reflection here (optional)…"></textarea><p class="small">You may include your reflection in your screenshot, or copy it into your Canvas submission.</p></div>
+<div class="actions" style="justify-content:center"><button class="primary" id="printBtn">Print / Save Completion</button><button class="secondary" id="playAgainBtn">Play Again</button></div>
+<div style="text-align:left;margin-top:22px"><h3>Answer Review</h3><div id="review"></div></div>
+</section>
+<div class="foot">LEARN THE MOVE • RESPECT THE RECOVERY • TRAIN SMART</div>
+</div>
+<script>
+const levels=[
+{icon:"💪",title:"Muscle Match",qs:[
+{q:"Which major muscle group is most directly involved when you straighten your elbow to push something away?",a:["Biceps","Triceps","Hamstrings","Abdominals"],c:1,why:"The triceps help extend (straighten) the elbow."},
+{q:"Which statement best describes a tendon?",a:["Connects muscle to bone","Connects bone to bone","Cushions the ends of bones only","Creates energy for muscle cells"],c:0,why:"Tendons attach muscles to bones and help transmit the force of a contraction."},
+{q:"During a biceps curl, which muscle is the prime mover for bending the elbow?",a:["Triceps","Quadriceps","Biceps","Calves"],c:2,why:"The biceps brachii is a prime mover for elbow flexion in a curl."}]},
+{icon:"⚙️",title:"Movement Mechanics",qs:[
+{q:"What is the main role of a stabilizer muscle during movement?",a:["Stop all movement","Help keep a joint or body part steady","Replace the prime mover","Make tendons longer"],c:1,why:"Stabilizers help maintain alignment and control while other muscles move a body part."},
+{q:"When one muscle produces a movement, what does an opposing (antagonist) muscle generally do?",a:["Works in opposition to control or reverse the movement","Connects bone to bone","Always stays completely relaxed","Stores the body's oxygen"],c:0,why:"Antagonist muscles oppose or control the action of the prime mover."},
+{q:"Which muscle group is especially active when you straighten your knee during a leg extension?",a:["Hamstrings","Biceps","Quadriceps","Forearm flexors"],c:2,why:"The quadriceps are the main knee extensors."}]},
+{icon:"🔋",title:"Recovery Lab",qs:[
+{q:"Why is recovery time important after challenging strength exercise?",a:["Muscles never need rest","It supports repair and adaptation","It guarantees no soreness","It makes proper form unnecessary"],c:1,why:"Recovery lets the body repair and adapt to training stress."},
+{q:"What is muscular fatigue?",a:["A temporary decrease in a muscle's ability to keep performing","A tendon connecting to bone","A permanent increase in strength after one set","The same thing as flexibility"],c:0,why:"Fatigue is a temporary reduction in the ability to maintain force or performance."},
+{q:"Which plan best shows gradual progression?",a:["Immediately lift the heaviest weight available","Train the same sore muscle hard every day","Increase challenge little by little as ability improves","Skip warm-ups to save time"],c:2,why:"Gradual progression increases training demand in manageable steps."}]},
+{icon:"🛡️",title:"Strength Safety",qs:[
+{q:"What should you prioritize when learning a new strength exercise?",a:["Speed over control","Good technique and safe, manageable resistance","Lifting more than everyone else","Holding your breath throughout every repetition"],c:1,why:"Proper form and a manageable load come before increasing resistance."},
+{q:"Which is an example of resistance used for strength training?",a:["Resistance band","Notebook paper only","A stopwatch","A stretching timer"],c:0,why:"Resistance bands provide external resistance for exercises."},
+{q:"What is a smart choice if an exercise causes sharp pain or you are unsure how to do it safely?",a:["Push through the pain","Add more resistance","Stop and ask a qualified adult or instructor for guidance","Copy the fastest person"],c:2,why:"Stop when you feel sharp pain and get guidance before continuing."}]}
+];
+let li=0,qi=0,score=0,answered=0,locked=false,history=[];
+const $=id=>document.getElementById(id);
+function render(){
+locked=false;const L=levels[li],Q=L.qs[qi];$("progressbox").classList.remove("hidden");$("gameCard").classList.remove("hidden");$("resultCard").classList.add("hidden");
+$("levelIcon").textContent=L.icon;$("levelTag").textContent="LEVEL "+(li+1);$("levelTitle").textContent=L.title;$("qnum").textContent="QUESTION "+(qi+1)+"/"+L.qs.length;
+$("question").textContent=Q.q;$("answers").innerHTML="";$("feedback").className="feedback";$("feedback").textContent="";
+$("nextBtn").textContent=qi===2?(li===3?"See Results 🏆":"Next Level →"):"Lock In Answer →";$("nextBtn").disabled=true;
+Q.a.forEach((txt,i)=>{const b=document.createElement("button");b.className="answer";b.textContent=String.fromCharCode(65+i)+". "+txt;b.addEventListener("click",()=>choose(i,b));$("answers").appendChild(b)});
+updateStats();
+}
+function choose(i,button){if(locked)return;locked=true;const Q=levels[li].qs[qi],buttons=[...$("answers").children],ok=i===Q.c;answered++;if(ok)score++;history.push({level:levels[li].title,q:Q.q,choice:Q.a[i],correct:Q.a[Q.c],ok,why:Q.why});buttons.forEach((b,j)=>{b.disabled=true;if(j===Q.c)b.classList.add("correct");if(j===i&&!ok)b.classList.add("incorrect")});$("feedback").className="feedback show "+(ok?"good":"bad");$("feedback").innerHTML=(ok?"✅ <strong>Correct!</strong> ":"💡 <strong>Not quite.</strong> ")+Q.why;$("nextBtn").disabled=false;$("nextBtn").textContent=qi===2?(li===3?"See Results 🏆":"Next Level →"):"Next Question →";updateStats()}
+function updateStats(){$("scoreText").textContent="Score: "+score+" / "+answered;$("progressText").textContent="Level "+(li+1)+" of 4";$("progressBar").style.width=((li*3+qi)/12*100)+"%"}
+$("nextBtn").addEventListener("click",()=>{if(!locked)return;if(qi<2)qi++;else if(li<3){li++;qi=0}else{finish();return}render()});
+function finish(){$("gameCard").classList.add("hidden");$("resultCard").classList.remove("hidden");$("progressBar").style.width="100%";$("progressText").textContent="All 4 levels complete";$("scoreText").textContent="Score: "+score+" / 12";const pct=Math.round(score/12*100);$("resultIcon").textContent=pct>=90?"🏆":pct>=70?"🌟":"💪";$("resultHeading").textContent=pct>=90?"POWER-UP MASTER!":pct>=70?"POWER-UP UNLOCKED!":"TRAINING COMPLETE!";$("resultMessage").textContent=pct>=90?"Excellent work—you showed strong knowledge of muscle mechanics and safe training.":pct>=70?"Nice work! You powered through all four levels. Review the explanations below to build your knowledge even more.":"You made it through all four levels! Review the feedback and try again to strengthen your knowledge."; $("finalScore").textContent=score+" / 12 correct · "+pct+"%";$("scoreProof").textContent="Final Score: "+score+" out of 12 ("+pct+"%)";$("review").innerHTML=history.map((h,i)=>'<div class="reviewitem"><strong>'+(i+1)+'. '+escapeHtml(h.q)+'</strong><div class="small">'+(h.ok?'✅ Correct':'❌ Your answer: '+escapeHtml(h.choice))+'<br>Correct answer: '+escapeHtml(h.correct)+'<br>'+escapeHtml(h.why)+'</div></div>').join("");}
+function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function restart() {li=0;qi=0;score=0;answered=0;locked=false;history=[];$("reflection").value="";render();window.scrollTo({top:0,behavior:"smooth"})}
+$("restartBtn").addEventListener("click",restart);$("playAgainBtn").addEventListener("click",restart);$("printBtn").addEventListener("click",()=>window.print());
+render();
+</script>
+</body>
+</html>
