@@ -16,7 +16,7 @@
 <header class="top">
 <div class="eyebrow">VIRTUAL PE • WEEKS 7–9 REVIEW</div>
 <h1 class="brand">PE <span>POWER-UP</span></h1>
-<div class="sub">THE MUSCLE ARCADE · Test your knowledge of muscles, movement, recovery, and strength-training safety.</div>
+<div class="sub">THE MUSCLE ARCADE · Identify major muscle groups, match muscles to movements, choose exercises, and review safe strength training.</div>
 <div class="chips"><div class="chip">🎮 4 LEVELS</div><div class="chip">⚡ 12 QUESTIONS</div><div class="chip">🏆 EARN YOUR POWER-UP</div></div>
 </header>
 <div class="progressbox" id="progressbox"><div class="progresstop"><span id="progressText">Level 1 of 4</span><span id="scoreText">Score: 0 / 0</span></div><div class="track"><div class="bar" id="progressBar"></div></div></div>
@@ -28,8 +28,8 @@
 </section>
 <section class="card result hidden" id="resultCard">
 <div class="big" id="resultIcon">🏆</div><div class="eyebrow">ARCADE COMPLETE</div><h2 id="resultHeading">POWER-UP UNLOCKED!</h2><p class="sub" id="resultMessage"></p><div class="score" id="finalScore"></div>
-<div class="completion" id="completionPanel"><h3>✅ PE POWER-UP: COMPLETED</h3><p><strong>Muscles & Strength Training Review</strong></p><p id="scoreProof"></p><p class="note">SCREENSHOT THIS COMPLETION SCREEN and submit it through the Week 10 Extra Credit assignment in Canvas.</p></div>
-<div style="text-align:left;margin-top:24px"><h3>⭐ Optional Reflection</h3><p class="note">What is one thing you can do to make strength training safer or help your muscles recover?</p><textarea class="reflection" id="reflection" placeholder="Write your reflection here (optional)…"></textarea><p class="small">You may include your reflection in your screenshot, or copy it into your Canvas submission.</p></div>
+<div class="completion" id="completionPanel"><h3>✅ PE POWER-UP: COMPLETED</h3><p><strong>Muscle ID & Strength Training Review</strong></p><p id="scoreProof"></p><p class="note">SCREENSHOT THIS COMPLETION SCREEN and submit it through the Week 10 Extra Credit assignment in Canvas.</p></div>
+<div style="text-align:left;margin-top:24px"><h3>⭐ Optional Reflection</h3><p class="note">Name one muscle group, an exercise that works it, and one way to perform that exercise safely.</p><textarea class="reflection" id="reflection" placeholder="Write your reflection here (optional)…"></textarea><p class="small">You may include your reflection in your screenshot, or copy it into your Canvas submission.</p></div>
 <div class="actions" style="justify-content:center"><button class="primary" id="printBtn">Print / Save Completion</button><button class="secondary" id="playAgainBtn">Play Again</button></div>
 <div style="text-align:left;margin-top:22px"><h3>Answer Review</h3><div id="review"></div></div>
 </section>
@@ -37,22 +37,22 @@
 </div>
 <script>
 const levels=[
-{icon:"💪",title:"Muscle Match",qs:[
-{q:"Which major muscle group is most directly involved when you straighten your elbow to push something away?",a:["Biceps","Triceps","Hamstrings","Abdominals"],c:1,why:"The triceps help extend (straighten) the elbow."},
-{q:"Which statement best describes a tendon?",a:["Connects muscle to bone","Connects bone to bone","Cushions the ends of bones only","Creates energy for muscle cells"],c:0,why:"Tendons attach muscles to bones and help transmit the force of a contraction."},
-{q:"During a biceps curl, which muscle is the prime mover for bending the elbow?",a:["Triceps","Quadriceps","Biceps","Calves"],c:2,why:"The biceps brachii is a prime mover for elbow flexion in a curl."}]},
-{icon:"⚙️",title:"Movement Mechanics",qs:[
-{q:"What is the main role of a stabilizer muscle during movement?",a:["Stop all movement","Help keep a joint or body part steady","Replace the prime mover","Make tendons longer"],c:1,why:"Stabilizers help maintain alignment and control while other muscles move a body part."},
-{q:"When one muscle produces a movement, what does an opposing (antagonist) muscle generally do?",a:["Works in opposition to control or reverse the movement","Connects bone to bone","Always stays completely relaxed","Stores the body's oxygen"],c:0,why:"Antagonist muscles oppose or control the action of the prime mover."},
-{q:"Which muscle group is especially active when you straighten your knee during a leg extension?",a:["Hamstrings","Biceps","Quadriceps","Forearm flexors"],c:2,why:"The quadriceps are the main knee extensors."}]},
-{icon:"🔋",title:"Recovery Lab",qs:[
-{q:"Why is recovery time important after challenging strength exercise?",a:["Muscles never need rest","It supports repair and adaptation","It guarantees no soreness","It makes proper form unnecessary"],c:1,why:"Recovery lets the body repair and adapt to training stress."},
-{q:"What is muscular fatigue?",a:["A temporary decrease in a muscle's ability to keep performing","A tendon connecting to bone","A permanent increase in strength after one set","The same thing as flexibility"],c:0,why:"Fatigue is a temporary reduction in the ability to maintain force or performance."},
-{q:"Which plan best shows gradual progression?",a:["Immediately lift the heaviest weight available","Train the same sore muscle hard every day","Increase challenge little by little as ability improves","Skip warm-ups to save time"],c:2,why:"Gradual progression increases training demand in manageable steps."}]},
-{icon:"🛡️",title:"Strength Safety",qs:[
-{q:"What should you prioritize when learning a new strength exercise?",a:["Speed over control","Good technique and safe, manageable resistance","Lifting more than everyone else","Holding your breath throughout every repetition"],c:1,why:"Proper form and a manageable load come before increasing resistance."},
-{q:"Which is an example of resistance used for strength training?",a:["Resistance band","Notebook paper only","A stopwatch","A stretching timer"],c:0,why:"Resistance bands provide external resistance for exercises."},
-{q:"What is a smart choice if an exercise causes sharp pain or you are unsure how to do it safely?",a:["Push through the pain","Add more resistance","Stop and ask a qualified adult or instructor for guidance","Copy the fastest person"],c:2,why:"Stop when you feel sharp pain and get guidance before continuing."}]}
+{icon:"🧠",title:"Muscle ID",qs:[
+{q:"Which muscle group is located at the front of your upper arm and helps bend your elbow during a curl?",a:["Triceps","Biceps","Hamstrings","Quadriceps"],c:1,why:"The biceps are on the front of the upper arm and help bend the elbow."},
+{q:"Which large muscle group is found across your chest and helps with pushing movements?",a:["Pectorals (chest)","Calves","Hamstrings","Lower back"],c:0,why:"The pectoral muscles help move your arms across your body and support pushing movements."},
+{q:"Which muscle group at the front of your thigh helps straighten your knee?",a:["Hamstrings","Glutes","Quadriceps","Biceps"],c:2,why:"The quadriceps are on the front of the thigh and extend (straighten) the knee."}]},
+{icon:"🔗",title:"Movement Match",qs:[
+{q:"You bend your elbow to lift a light object. Which muscle is a prime mover for this action?",a:["Biceps","Triceps","Calves","Abdominals"],c:0,why:"The biceps help flex (bend) the elbow."},
+{q:"You straighten your elbow to push a door closed. Which muscle group is working strongly?",a:["Hamstrings","Triceps","Quadriceps","Glutes"],c:1,why:"The triceps help extend (straighten) the elbow during pushing movements."},
+{q:"Which statement best describes a tendon?",a:["Connects muscle to bone","Connects bone to bone","Keeps the body hydrated","Makes muscles longer"],c:0,why:"Tendons attach muscles to bones and transfer force during movement."}]},
+{icon:"🏋️",title:"Choose the Exercise",qs:[
+{q:"Which exercise is a good match for strengthening the chest muscles (pectorals)?",a:["Push-up","Calf raise","Hamstring curl","Wrist circle"],c:0,why:"Push-ups use the chest, shoulders, and triceps to push the body away from the floor or wall."},
+{q:"Which exercise most directly targets the quadriceps and glutes together?",a:["Squat","Biceps curl","Wrist curl","Shoulder shrug"],c:0,why:"Squats work the quadriceps and glutes, along with other muscles that help stabilize the body."},
+{q:"Which exercise most directly works the biceps?",a:["Biceps curl","Calf raise","Crunch","Glute bridge"],c:0,why:"A biceps curl focuses on bending the elbow using the biceps."}]},
+{icon:"🛡️",title:"Train Smart",qs:[
+{q:"What should you prioritize when learning a new strength exercise?",a:["Speed over control","Good technique and manageable resistance","Lifting more than everyone else","Holding your breath throughout every repetition"],c:1,why:"Good form and a manageable load come before increasing resistance."},
+{q:"Why is recovery time important after challenging strength exercise?",a:["Muscles never need rest","It supports repair and adaptation","It guarantees no soreness","It makes proper form unnecessary"],c:1,why:"Recovery gives the body time to repair and adapt to training."},
+{q:"What is a smart choice if an exercise causes sharp pain or you are unsure how to do it safely?",a:["Push through the pain","Add more resistance","Stop and ask a qualified adult or instructor for guidance","Copy the fastest person"],c:2,why:"Stop if you feel sharp pain and ask for guidance before continuing."}]}
 ];
 let li=0,qi=0,score=0,answered=0,locked=false,history=[];
 const $=id=>document.getElementById(id);
