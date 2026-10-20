@@ -4,11 +4,11 @@ A student-friendly, browser-based virtual PE review game focused on muscles, mov
 
 ## Game experience
 - **Sports training simulator theme:** students coach Alex through a four-station training floor.
-- **Station 1 — Muscle Scanner:** identify the muscles used in common strength movements.
-- **Station 2 — Exercise Match Lab:** interactive matching for movements, muscle groups, and tendons.
-- **Station 3 — Equipment & Exercise Lab:** choose exercises and beginner-friendly training approaches.
-- **Station 4 — Coach Mode:** make smart decisions about progressive overload, fatigue, technique, and sharp pain.
-- Immediate coaching feedback after decisions.
+- **Station 1 — Muscle Scanner:** five scenario-based questions about muscle groups, movement, core stability, and tendons.
+- **Station 2 — Exercise Match Lab:** three interactive matching challenges about movement, muscles, structures, and training goals.
+- **Station 3 — Equipment & Exercise Lab:** five applied questions about exercise selection, resistance tools, technique, and readiness to progress.
+- **Station 4 — Coach Mode:** five scenario-based questions about progressive overload, fatigue, recovery, sharp pain, and muscular endurance.
+- Immediate coaching feedback after decisions, with explanations.
 - A single final **PE Power-Up Champion** completion badge, score summary, optional reflection, and print/save option.
 - Responsive layout for desktop, Chromebook, tablet, and mobile screens.
 - No extra libraries, login, or personal data collection.
