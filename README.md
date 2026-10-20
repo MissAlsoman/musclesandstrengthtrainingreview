@@ -1,30 +1,35 @@
-# PE Power-Up: The Muscle Arcade
+# PE Power-Up: Training Simulator
 
-A student-friendly, browser-based review game for PE Weeks 7–9: Muscle Mechanics, Muscles in Motion, and Strength Training.
+A student-friendly, browser-based virtual PE review game focused on muscles, movement, strength-training tools, and safe training choices.
 
-## What's included
-- Interactive clickable front-view muscle diagram with five muscle groups and exercise matching
-- Four quiz levels: Muscle ID, Movement Match, Choose the Exercise, and Train Smart
-- 12 multiple-choice questions with immediate feedback and explanations, connecting muscle groups to movements and strength exercises
-- Score tracking and an end-of-game completion screen
-- Optional reflection prompt
-- No extra libraries, logins, or data collection
+## Game experience
+- **Sports training simulator theme:** students coach Alex through a four-station training floor.
+- **Station 1 — Muscle Scanner:** identify the muscles used in common strength movements.
+- **Station 2 — Exercise Match Lab:** interactive matching for movements, muscle groups, and tendons.
+- **Station 3 — Equipment & Exercise Lab:** choose exercises and beginner-friendly training approaches.
+- **Station 4 — Coach Mode:** make smart decisions about progressive overload, fatigue, technique, and sharp pain.
+- Immediate coaching feedback after decisions.
+- A single final **PE Power-Up Champion** completion badge, score summary, optional reflection, and print/save option.
+- Responsive layout for desktop, Chromebook, tablet, and mobile screens.
+- No extra libraries, login, or personal data collection.
 
 ## Publish with GitHub Pages
 1. Open the repository **Settings** tab.
 2. Choose **Pages** in the left menu.
 3. Under **Build and deployment**, set **Source** to **Deploy from a branch**.
 4. Select branch **main** and folder **/(root)**, then click **Save**.
-5. Wait a few minutes, then open: https://missalsoman.github.io/musclesandstrengthtrainingreview/
+5. Wait for GitHub Pages to deploy, then visit: https://missalsoman.github.io/musclesandstrengthtrainingreview/
 
 ## Student directions
-1. Open the published game link.
-2. Complete all four levels.
-3. When the completion screen appears, take a screenshot that shows the game title and final score.
-4. Submit the screenshot through the Week 10 Extra Credit assignment in Canvas.
-5. Complete the reflection if it is part of your teacher's directions.
+1. Open the published game.
+2. Select **Start Training**.
+3. Complete all four stations. In the matching station, select a movement on the left and its match on the right, then choose **Match Selected Pair**.
+4. Read the coaching feedback and continue until the final completion badge appears.
+5. Screenshot the final completion screen and submit it through the Week 10 Extra Credit assignment in Canvas.
+6. Complete the optional reflection if directed by your teacher.
 
 ## Teacher notes
 - The game is self-contained in `index.html`.
-- The score is calculated in the student's browser and is not sent or stored anywhere.
-- Students can print or save the completion screen, but a screenshot submitted in Canvas is the easiest proof of completion.
+- Scores are calculated in the student's browser and are not sent to a server or saved remotely.
+- The final screen is the completion proof; individual stations do not issue separate badges.
+- The live Pages deployment and in-browser gameplay should be checked after publishing.
